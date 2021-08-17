@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { MirageServer } from './Server/Server';
+
+MirageServer();
 
 ReactDOM.render(
   <React.StrictMode>
