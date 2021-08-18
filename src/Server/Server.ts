@@ -1,5 +1,5 @@
 import { belongsTo, createServer, Factory, hasMany, Model } from "miragejs";
-import { DiariesRoute, EntriesRoute, GetCheckRoute, LoginRoute, PostCheckRoute } from "./Routes";
+import { AllDiariesRoute, DiariesRoute, EntriesRoute, GetCheckRoute, LoginRoute, PostCheckRoute, SignupRoute } from "./Routes";
 
 
 export const MirageServer = () =>
@@ -55,10 +55,16 @@ export const MirageServer = () =>
           routes() : void {
               this.get("/api/checkget/:id", GetCheckRoute)
               this.get("/api/checkpost", PostCheckRoute)
+              // Post Request For Login
               this.post("/api/user/login", LoginRoute )
-              this.get("/api/user/diaries", DiariesRoute)
-              this.get("/api/user/entries", EntriesRoute)
-
+              // Post Request For signup
+              this.post("/api/user/signup", SignupRoute)
+              // Get Request For user's Diaries
+              this.get("/api/user/:userId/diaries", DiariesRoute)
+              // Get Request for Diary's Entries
+              this.get("/api/user/:diaryId/entries", EntriesRoute)
+              // Get Request For All diaries
+              this.get("/api/alldiaries", AllDiariesRoute)
           }
     })
 }
