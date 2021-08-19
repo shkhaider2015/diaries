@@ -46,11 +46,10 @@ export const SignupRoute = (schema:any, request:Request) => {
 export const LoginRoute = (schema:any, request:Request) => {
     let req = JSON.parse(request.requestBody);
     let body = JSON.parse(req.body)
-    let userId = body.id;
     let email = body.email;
     let password = body.password;
 
-    let user = schema.users.find(userId);
+    let user = schema.users.findBy({email});
 
     if(!user)
     {
@@ -63,9 +62,14 @@ export const LoginRoute = (schema:any, request:Request) => {
 
     return user.attrs;
 }
-export const DiariesRoute = (schema:any, request:any) => {
+export const DiariesRoute = (schema:any, request:Request) => {
+    let userId = request.params.userid;
+    if(!userId) return new Response(401);
 
-    return schema.users.all();
+    let user = schema.users.find(userId);
+    if(!user) return new Response(402);
+
+    return schema.users.find(userId).diary
 }
 export const EntriesRoute = (schema:any, request:any) => {
 
@@ -77,3 +81,51 @@ export const AllDiariesRoute = (schema:any) => {
     return schema.diaries.all();
 }
 
+export const CREATE_USER_DIARY = (schema:any, request:Request) =>
+{
+    let req = JSON.parse(request.requestBody);
+    let body = JSON.parse(req.body);
+    
+    let user = schema.users.find(body.userId);
+
+    if(!user) return new Response(400)
+
+
+    let jj = schema.diaries.create(body)
+    user.diaryIds.push(jj.attrs.id)
+
+    let againUser = schema.users.find(body.userId);
+    let diaries = againUser.diary
+
+    console.log("back : ", diaries)
+
+    return diaries
+}
+
+export const CREATE_USER_ENTRY = (schema:any, request:Request) =>
+{
+    let req = JSON.parse(request.requestBody);
+    let body = JSON.parse(req.body);
+    
+    // let user = schema.users.find(body.diaryId);
+    let diary = schema.diaries.find(body.diaryId);
+
+    if(!diary) return new Response(400)
+
+
+    // let jj = schema.diaries.create(body) //
+    let newEntry = schema.entries.create(body)
+    // user.diaryIds.push(jj.attrs.id)
+    diary.entryIds.push(newEntry.attrs.id)
+
+    // let againUser = schema.users.find(body.userId);
+    // let diaries = againUser.diary
+
+    let fetchDiary = schema.diaries.find(body.diaryId);
+    let entries = fetchDiary.entry
+
+    console.log("back entry : ", diary)
+    console.log("back new entry : ", entries)
+
+    return entries
+}

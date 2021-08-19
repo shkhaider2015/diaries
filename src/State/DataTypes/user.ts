@@ -7,20 +7,20 @@ export interface User {
 }
 
 export interface Diary {
-    id : string
+    id? : string
     title : string
     desc : string
     access : "public" | "private"
-    createdAt : number
-    updatedAt : number
-    userId : string
-    entryIds : string[]
+    createdAt? : number
+    updatedAt? : number
+    userId? : string
+    entryIds? : string[]
 }
 
 export interface Entry {
-    id : string
+    id? : string
     title : string
     desc : string
     createdAt : number
-    diaryId : string
+    diaryId? : string
 }
