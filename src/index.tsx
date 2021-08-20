@@ -4,12 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { MirageServer } from './Server/Server';
+import { Provider } from 'react-redux';
+import { Store } from './State/Store';
 
 MirageServer();
 
 ReactDOM.render(
   <React.StrictMode>
+    <Provider store={Store} >
     <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

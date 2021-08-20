@@ -12,16 +12,16 @@ export const GetCheckRoute = (schema:any, request:Request) => {
     const entry = schema.entries.find(id)
     // console.log("Entries ", entry)
 
-    const Diaries = user._schema.diaries.all();
+    // const Diaries = user._schema.diaries.all();
     // console.log("Diaries : ", Diaries)
 
-    const Entries = user._schema.entries.all();
+    // const Entries = user._schema.entries.all();
     // console.log("Entries : ", Entries)
 
     return entry.attrs
 }
 export const PostCheckRoute = (schema:any, request:Request) => {
-    const res = request.params
+    // const res = request.params
     return {}
 }
 
@@ -29,7 +29,7 @@ export const SignupRoute = (schema:any, request:Request) => {
     let attrs = JSON.parse(request.requestBody);
     let body = JSON.parse(attrs.body);
     let email = body.email;
-    let password = body.password;
+    // let password = body.password;
 
     let user = schema.users.findBy({ email : email });
 
@@ -47,7 +47,7 @@ export const LoginRoute = (schema:any, request:Request) => {
     let req = JSON.parse(request.requestBody);
     let body = JSON.parse(req.body)
     let email = body.email;
-    let password = body.password;
+    // let password = body.password; // will define
 
     let user = schema.users.findBy({email});
 
