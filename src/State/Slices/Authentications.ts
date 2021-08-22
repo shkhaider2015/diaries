@@ -14,7 +14,7 @@ const initialState = {
 }
 
 export const Authentications = createSlice({
-    name : 'authentications',
+    name : 'authentication',
     initialState : initialState,
     reducers : {
         Login : (state, action) => {
