@@ -32,6 +32,30 @@ export const SignupSlice = createSlice({
         })
     }
 })
+export const LoginSlice = createSlice({
+    name : 'login-slice',
+    initialState : initialState,
+    reducers : {
 
+    },
+    extraReducers : (builder) => {
+        builder.addCase(SignupAction.pending, (state, action) => {
+            state.loading = true;
+            state.error = null;
+            state.item = null 
+        })
+        builder.addCase(SignupAction.fulfilled, (state, action) => {
+            state.loading = false;
+            state.error = null;
+            state.item = null;
+        })
+        builder.addCase(SignupAction.rejected, (state, action) => {
+            state.loading = false;
+            state.error = null;
+            state.item = null;
+        })
+    }
+})
 // export const { Login , Signup  } = Authentications.actions;
 export const SignupReducer = SignupSlice.reducer;
+export const LoginReducer = LoginSlice.reducer;

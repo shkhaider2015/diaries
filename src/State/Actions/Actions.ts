@@ -13,3 +13,16 @@ export const SignupAction = createAsyncThunk<any, {email:string, password : stri
     }
     return axios.post("/api/user/signup", PostRequest).then(res => res.data)
 })
+
+export const LoginAction = createAsyncThunk<any, {email:string, password : string}>("login-slice/loginaction", async (data) => {
+    console.log("email : ", data)
+    // console.log("password : ", password)
+    let PostRequest = {
+        method: "POST",
+        body: JSON.stringify({
+            email : data.email,
+            password : data.password
+        })
+    }
+    return axios.post("/api/user/login", PostRequest).then(res => res.data)
+})

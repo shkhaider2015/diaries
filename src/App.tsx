@@ -6,11 +6,21 @@ import { bindActionCreators } from "redux";
 
 const App: FC = () => {
     const signup = useAppSelector((state) => state.SignupReducer)
+    const login = useAppSelector((state) => state.LoginReducer)
     const dispatch = useAppDispatch()
-    const { SignupAction } = bindActionCreators(actioncreator, dispatch);
+    const { SignupAction, LoginAction } = bindActionCreators(actioncreator, dispatch);
 
 
     const Signup = () => {
+        let email: string = "igi2022@gmail.com";
+        let password: string = "17352015";
+        
+        SignupAction({
+            email,
+            password
+        });
+    }
+    const Login = () => {
         let email: string = "igi2022@gmail.com";
         let password: string = "17352015";
         
@@ -25,7 +35,7 @@ const App: FC = () => {
         {console.log("Login data : ", signup.loading)}
         {console.log("Signup data : ", signup.item)}
         <h1> {signup.loading ? "Loading" : null} </h1>
-        <button >Login</button>
+        <button onClick={() => Login()}  >Login</button>
         <button onClick={() => Signup()} >Signup</button>
     </div>
 }
