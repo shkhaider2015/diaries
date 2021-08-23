@@ -1,16 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { stat } from "fs";
-import { SignupAction } from "../Actions/Actions";
+import { SignupAction, LoginAction } from "../Actions/Actions";
+import { ILoginState, ISignupState } from "../DataTypes/user";
 
-const initialState = {
+const signupState:ISignupState = {
     loading : false,
     error : null,
-    item : null
+    isSignup : false
+}
+const loginState:ILoginState = {
+    loading : false,
+    error : null,
+    items : null
 }
 
 export const SignupSlice = createSlice({
     name : 'signup-slice',
-    initialState : initialState,
+    initialState : signupState,
     reducers : {
 
     },
@@ -18,41 +23,40 @@ export const SignupSlice = createSlice({
         builder.addCase(SignupAction.pending, (state, action) => {
             state.loading = true;
             state.error = null;
-            state.item = null 
         })
         builder.addCase(SignupAction.fulfilled, (state, action) => {
             state.loading = false;
             state.error = null;
-            state.item = null;
+            state.isSignup = true;
         })
         builder.addCase(SignupAction.rejected, (state, action) => {
             state.loading = false;
             state.error = null;
-            state.item = null;
+            state.isSignup = false;
         })
     }
 })
 export const LoginSlice = createSlice({
     name : 'login-slice',
-    initialState : initialState,
+    initialState : loginState,
     reducers : {
 
     },
     extraReducers : (builder) => {
-        builder.addCase(SignupAction.pending, (state, action) => {
+        builder.addCase(LoginAction.pending, (state, action) => {
             state.loading = true;
             state.error = null;
-            state.item = null 
         })
-        builder.addCase(SignupAction.fulfilled, (state, action) => {
+        builder.addCase(LoginAction.fulfilled, (state, action) => {
+            console.log("Payload Login : ", action.payload)
             state.loading = false;
             state.error = null;
-            state.item = null;
+            state.items = action.payload;
         })
-        builder.addCase(SignupAction.rejected, (state, action) => {
+        builder.addCase(LoginAction.rejected, (state, action) => {
             state.loading = false;
-            state.error = null;
-            state.item = null;
+            state.error = "Somtheing is wrong !!";
+            state.items = null;
         })
     }
 })

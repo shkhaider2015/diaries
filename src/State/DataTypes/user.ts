@@ -24,3 +24,15 @@ export interface Entry {
     createdAt : number
     diaryId? : string
 }
+
+export interface ILoginState {
+    loading : boolean
+    error : string | null
+    items : User | null
+}
+
+export interface ISignupState {
+    loading : boolean
+    error : string | null
+    isSignup : boolean
+}

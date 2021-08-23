@@ -1,14 +1,11 @@
 import { FC } from "react";
-import { useAppDispatch, useAppSelector } from "./State/hook";
-import { Login, Signup } from "./State/Slices/Authentications";
-import * as actioncreator from "./State/Actions/Actions"
-import { bindActionCreators } from "redux";
+import { useAppSelector } from "./State/hook";
+import { useAction } from "./State/Actions/useAction";
 
 const App: FC = () => {
     const signup = useAppSelector((state) => state.SignupReducer)
     const login = useAppSelector((state) => state.LoginReducer)
-    const dispatch = useAppDispatch()
-    const { SignupAction, LoginAction } = bindActionCreators(actioncreator, dispatch);
+    const { LoginAction, SignupAction } = useAction()
 
 
     const Signup = () => {
@@ -24,7 +21,7 @@ const App: FC = () => {
         let email: string = "igi2022@gmail.com";
         let password: string = "17352015";
         
-        SignupAction({
+        LoginAction({
             email,
             password
         });
@@ -32,9 +29,8 @@ const App: FC = () => {
 
     return <div>
         <h1>Home </h1>
-        {console.log("Login data : ", signup.loading)}
-        {console.log("Signup data : ", signup.item)}
         <h1> {signup.loading ? "Loading" : null} </h1>
+        <h1> {login.loading ? "Loading" : null} </h1>
         <button onClick={() => Login()}  >Login</button>
         <button onClick={() => Signup()} >Signup</button>
     </div>
