@@ -10,24 +10,24 @@ const App: FC = () => {
     const { LoginAction, SignupAction } = useAction()
 
 
-    const Signup = () => {
-        let email: string = "igi2022@gmail.com";
-        let password: string = "17352015";
+    // const Signup = () => {
+    //     let email: string = "igi2022@gmail.com";
+    //     let password: string = "17352015";
         
-        SignupAction({
-            email,
-            password
-        });
-    }
-    const Login = () => {
-        let email: string = "igi2022@gmail.com";
-        let password: string = "17352015";
+    //     SignupAction({
+    //         email,
+    //         password
+    //     });
+    // }
+    // const Login = () => {
+    //     let email: string = "igi2022@gmail.com";
+    //     let password: string = "17352015";
         
-        LoginAction({
-            email,
-            password
-        });
-    }
+    //     LoginAction({
+    //         email,
+    //         password
+    //     });
+    // }
 
     // return <div>
     //     <h1>Home </h1>

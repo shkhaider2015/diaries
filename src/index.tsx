@@ -1,3 +1,5 @@
+import "./custom.scss";
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -6,14 +8,17 @@ import reportWebVitals from './reportWebVitals';
 import { MirageServer } from './Server/Server';
 import { Provider } from 'react-redux';
 import { Store } from './State/Store';
+import { BrowserRouter as Router } from "react-router-dom";
 
 MirageServer();
 
 ReactDOM.render(
   <React.StrictMode>
+    <Router>
     <Provider store={Store} >
     <App />
     </Provider>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

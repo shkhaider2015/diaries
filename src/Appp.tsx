@@ -130,7 +130,8 @@ function App() {
             {
               user.diaryIds
               ? null
-              : <button onClick={() => createDiary(user.id)} >Create Diary</button>
+              // : <button onClick={() => createDiary(user.id)} >Create Diary</button>
+              : null
             }
             </div>
             <button onClick={() => getDiaries(user)} >Get Diaries</button>

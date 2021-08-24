@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useAction } from "../State/Actions/useAction";
-import { useAppSelector } from "../State/hook";
+import { useAction } from "../../State/Actions/useAction";
+import { useAppSelector } from "../../State/hook";
 
 export const LoginComp = () => {
 
@@ -22,7 +22,7 @@ export const LoginComp = () => {
         () => {
             if(loginState.items)
             {
-                navigate("/home")
+                navigate("/")
             }
             //eslint-disable-next-line
         }, [loginState.items]
@@ -57,6 +57,7 @@ export const LoginComp = () => {
             
             <button className="w-75 mt-5 btn btn-primary shadow-sm" type="submit" >Submit</button>
         </form>
+        <div className="text-center pt-3" ><span onClick={() => navigate("/signup")} >Don't have an account ?</span></div>
     </div>
 </div>
 }
