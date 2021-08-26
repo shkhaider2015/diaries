@@ -39,7 +39,7 @@ const App: FC = () => {
 
     return <div>
         <NavComp />
-        <div className="container" >
+        <div className="" >
         <RouterComp />
         </div>
     </div>
