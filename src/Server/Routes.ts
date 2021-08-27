@@ -71,9 +71,14 @@ export const DiariesRoute = (schema:any, request:Request) => {
 
     return schema.users.find(userId).diary
 }
-export const EntriesRoute = (schema:any, request:any) => {
+export const EntriesRoute = (schema:any, request:Request) => {
+    let diaryId = request.params.diaryid;
+    if(!diaryId) return new Response(401)
 
-    return schema.users.all();
+    let diary = schema.diaries.find(diaryId);
+    if(!diary) return new Response(402)
+
+    return schema.diaries.find(diaryId).entry;
 }
 
 export const AllDiariesRoute = (schema:any) => {
@@ -94,12 +99,12 @@ export const CREATE_USER_DIARY = (schema:any, request:Request) =>
     let jj = schema.diaries.create(body)
     user.diaryIds.push(jj.attrs.id)
 
-    let againUser = schema.users.find(body.userId);
-    let diaries = againUser.diary
+    // let againUser = schema.users.find(body.userId);
+    // let diaries = againUser.diary
 
-    console.log("back : ", diaries)
+    // console.log("back : ", diaries)
 
-    return diaries
+    return schema.users.find(body.userId).diary
 }
 
 export const CREATE_USER_ENTRY = (schema:any, request:Request) =>
@@ -121,11 +126,11 @@ export const CREATE_USER_ENTRY = (schema:any, request:Request) =>
     // let againUser = schema.users.find(body.userId);
     // let diaries = againUser.diary
 
-    let fetchDiary = schema.diaries.find(body.diaryId);
-    let entries = fetchDiary.entry
+    // let fetchDiary = schema.diaries.find(body.diaryId);
+    // let entries = fetchDiary.entry
 
-    console.log("back entry : ", diary)
-    console.log("back new entry : ", entries)
+    // console.log("back entry : ", diary)
+    // console.log("back new entry : ", entries)
 
-    return entries
+    return schema.diaries.find(body.diaryId).entry
 }

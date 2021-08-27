@@ -33,5 +33,5 @@ export enum TDeleteDiary {
 export interface IDiaryState {
     loading : boolean
     error : string | null
-    items : [] | null
+    items : Diary[] | null
 } 

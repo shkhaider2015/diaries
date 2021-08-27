@@ -1,7 +1,10 @@
 import './App.css';
 import { useState } from 'react';
-import { Diary, Entry, User } from './State/DataTypes/user';
+import { User } from './State/DataTypes/user';
+
 import axios from 'axios';
+import { Diary } from './State/DataTypes/diary';
+import { Entry } from './State/DataTypes/entry';
 
 function App() {
   const [user, setUser] = useState<User>();

@@ -38,7 +38,6 @@ export const LoginComp = () => {
     <div className="card p-5    shadow col-lg-6 col-md-8 col-sm-10 col-10 " >
         <form className="text-center" onSubmit={(e) => handleSubmit(e)} >
             <legend>Login</legend>
-            {console.log("Login Data ", loginState.items)}
            
                 <input className="w-100 p-2 mt-3 rounded border border-light shadow-sm " name="email" title="email" placeholder="Email" type="email" required />
             

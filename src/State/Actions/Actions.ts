@@ -1,5 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { Diary } from "../DataTypes/diary";
+import { Entry } from "../DataTypes/entry";
 import { User } from "../DataTypes/user";
 
 export const SignupAction = createAsyncThunk<any, {user:User}>("signup-slice/signupaction", async (data) => {
@@ -29,8 +31,41 @@ export const LoginAction = createAsyncThunk<any, {email:string, password : strin
         return res.data})
 })
 
-export const DiaryAction = createAsyncThunk<any, {userid : string}>("login-slice/loginaction", async (data) => {
+export const DiaryAction = createAsyncThunk<any, {userid : string| undefined}>("diary-slice/diaryaction", async (data) => {
     
+    if(!data.userid)
+    {
+        return
+    }
+
     return axios.get(`/api/user/${data.userid}/diaries`).then(res => {
-        return res.data})
+        return res.data.diaries})
+})
+
+export const EntryAction = createAsyncThunk<any, {diaryId : string}>("entry-slice/entryaction", async (data) => {
+    
+    return axios.get(`/api/user/${data.diaryId}/entries`).then(res => {
+        return res.data.entries})
+})
+
+export const AddDiaryAction = createAsyncThunk<any, {diary : Diary}>("diary-slice/diaryaction", async (data) => {
+    
+    let postReq = {
+        method : "POST",
+        body : JSON.stringify(data.diary)
+    }
+
+    return axios.post("/api/user/diary/create", postReq).then(res => {
+        return res.data.diaries})
+})
+
+export const AddEntryAction = createAsyncThunk<any, {entry : Entry}>("entry-slice/entryaction", async (data) => {
+    
+    let postReq = {
+        method : "POST",
+        body : JSON.stringify(data.entry)
+    }
+
+    return axios.post("/api/user/entry/create", postReq).then(res => {
+        return res.data.entries})
 })

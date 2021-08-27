@@ -20,7 +20,6 @@ export const DiarySlice = createSlice({
             state.error = null;
         })
         builder.addCase(DiaryAction.fulfilled, (state, action) => {
-            console.log("Payload Login : ", action.payload)
             state.loading = false;
             state.error = null;
             state.items = action.payload;

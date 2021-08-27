@@ -12,10 +12,11 @@ export const RouterComp: FC = () => {
     const loginState = useAppSelector(state => state.LoginReducer);
 
     return <Routes>
-        <Route path="/" element={loginState.items ? <HomeComp /> : <HomeComp />} >
+        <Route path="/" element={loginState.items ? <HomeComp /> : <LoginComp />} >
             <Route path="/" element={<Entries />} />
+            <Route path="/:diaryid/entries" element={<Entries />} />
             <Route path="/newdiary" element={<AddDiary />} />
-            <Route path="/newentry" element={<AddEntry />} />
+            <Route path="/:diaryId/newentry" element={<AddEntry />} />
         </Route>
 
         {/* <Route path="/home" element={<HomeComp />} >

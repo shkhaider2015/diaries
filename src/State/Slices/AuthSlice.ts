@@ -48,7 +48,6 @@ export const LoginSlice = createSlice({
             state.error = null;
         })
         builder.addCase(LoginAction.fulfilled, (state, action) => {
-            console.log("Payload Login : ", action.payload)
             state.loading = false;
             state.error = null;
             state.items = action.payload;
