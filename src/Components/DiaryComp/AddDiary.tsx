@@ -1,14 +1,22 @@
 import { FC, useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
+import { Diary } from "../../State/DataTypes/diary";
 
 export const AddDiary: FC = () => {
     const [isPrivate, setIsPrivate] = useState<boolean>(false)
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
-        const title : string = e.target.title.value;
-        const desc : string = e.target.desc.value;
-        const createdAt = Date.now();
+        const diary:Diary = {
+            title : e.target.title.value,
+            desc : e.target.desc.value,
+            createdAt : Date.now(),
+            access : isPrivate ? "private" : "public",
+            userId : '',
+            entryIds : []
+        }
+
+        console.log("Diary Data : ", diary)
 
     }
     return <Row style={{ height: '90vh', display: 'grid', placeItems: 'center' }} >

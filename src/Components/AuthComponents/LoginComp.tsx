@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAction } from "../../State/Actions/useAction";
 import { useAppSelector } from "../../State/hook";
@@ -40,17 +39,7 @@ export const LoginComp = () => {
         <form className="text-center" onSubmit={(e) => handleSubmit(e)} >
             <legend>Login</legend>
             {console.log("Login Data ", loginState.items)}
-            {/* {
-                isCall
-                ? <p> {
-                    loginState.loading
-                    ? "...Wait"
-                    : loginState.error
-                        ? "...Error"
-                        : console.log(loginState.data)
-                } </p>
-                : ""
-            } */}
+           
                 <input className="w-100 p-2 mt-3 rounded border border-light shadow-sm " name="email" title="email" placeholder="Email" type="email" required />
             
                 <input className="w-100 p-2 mt-3 rounded border border-light shadow-sm " name="password" title="password" placeholder="Password" type="password" required />

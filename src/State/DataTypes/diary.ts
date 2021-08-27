@@ -29,3 +29,9 @@ export enum TDeleteDiary {
     SUCCESS = "delete-diary-success", 
     FAILURE= "delete-diary-failure",
 }
+
+export interface IDiaryState {
+    loading : boolean
+    error : string | null
+    items : [] | null
+} 

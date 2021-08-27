@@ -1,14 +1,20 @@
 import { FC } from "react";
 import { Row, Col, Form,Button } from "react-bootstrap";
+import { Entry } from "../../State/DataTypes/user";
 
 export const AddEntry : FC = () =>
 {
     const handleSubmit = (e:any) =>
     {
         e.preventDefault();
-        const title : string = e.target.title.value;
-        const desc : string = e.target.desc.value;
-        const createdAt = Date.now();
+        const entry:Entry = {
+            title : e.target.title.value,
+            desc : e.target.desc.value,
+            createdAt : Date.now(),
+            diaryId : ''
+        }
+
+        console.log("Entry Data : ", entry);
 
     }
 

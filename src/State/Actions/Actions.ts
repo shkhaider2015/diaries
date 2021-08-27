@@ -28,3 +28,9 @@ export const LoginAction = createAsyncThunk<any, {email:string, password : strin
     return axios.post("/api/user/login", PostRequest).then(res => {
         return res.data})
 })
+
+export const DiaryAction = createAsyncThunk<any, {userid : string}>("login-slice/loginaction", async (data) => {
+    
+    return axios.get(`/api/user/${data.userid}/diaries`).then(res => {
+        return res.data})
+})

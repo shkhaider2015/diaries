@@ -1,86 +1,36 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { TGetDiary, TAddDiary, TUpdateDiary, TDeleteDiary } from "../DataTypes/diary";
+import { createSlice } from "@reduxjs/toolkit"
+import { DiaryAction } from "../Actions/Actions";
+import { IDiaryState } from "../DataTypes/diary";
 
-const initialState = {
+const diaryState:IDiaryState = {
     loading : false,
     error : null,
-    data : null
+    items : null
 }
 
 export const DiarySlice = createSlice({
-    name : "DiarySlice",
-    initialState : initialState,
+    name : 'diary-slice',
+    initialState : diaryState,
     reducers : {
-        GetDiaries : (state, action) =>
-        {
-            switch (action.payload.type) {
-                case TGetDiary.REQUEST:
-                    
-                    return state
-                case TGetDiary.SUCCESS:
-                
-                    return state
-                case TGetDiary.FAILURE:
-                    
-                    return state
-            
-                default:
-                    return state
-            }
-        },
-        AddDiary : (state, action) =>
-        {
-            switch (action.payload.type) {
-                case TAddDiary.REQUEST:
-                    
-                    return state
-                case TAddDiary.SUCCESS:
-                
-                    return state
-                case TAddDiary.FAILURE:
-                    
-                    return state
-            
-                default:
-                    return state
-            }
-        },
-        UpdateDiary : (state, action) =>
-        {
-            switch (action.payload.type) {
-                case TUpdateDiary.REQUEST:
-                    
-                    return state
-                case TUpdateDiary.SUCCESS:
-                
-                    return state
-                case TUpdateDiary.FAILURE:
-                    
-                    return state
-            
-                default:
-                    return state
-            }
-        },
-        DeleteDiary : (state, action) =>
-        {
-            switch (action.payload.type) {
-                case TDeleteDiary.REQUEST:
-                    
-                    return state
-                case TDeleteDiary.SUCCESS:
-                
-                    return state
-                case TDeleteDiary.FAILURE:
-                    
-                    return state
-            
-                default:
-                    return state
-            }
-        }
-    }
-}) 
 
-export const { AddDiary, GetDiaries, DeleteDiary, UpdateDiary } = DiarySlice.actions;
+    },
+    extraReducers : (builder) => {
+        builder.addCase(DiaryAction.pending, (state, action) => {
+            state.loading = true;
+            state.error = null;
+        })
+        builder.addCase(DiaryAction.fulfilled, (state, action) => {
+            console.log("Payload Login : ", action.payload)
+            state.loading = false;
+            state.error = null;
+            state.items = action.payload;
+        })
+        builder.addCase(DiaryAction.rejected, (state, action) => {
+            state.loading = false;
+            state.error = "Somtheing is wrong !!";
+            state.items = null;
+        })
+    }
+})
+
 export const DiaryReducer = DiarySlice.reducer;

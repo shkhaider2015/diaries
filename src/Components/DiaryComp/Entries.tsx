@@ -21,7 +21,7 @@ export const Entries: FC = () => {
             </div>
         </div>
         {
-            [1, 2, 3, 4, 5, 6, 7, , 8, 9, 10]
+            [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
                 .map((item: any, index: number) => <div key={index} className="col-4" >
                     <EntryCardComp />
                 </div>)
