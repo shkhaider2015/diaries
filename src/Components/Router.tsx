@@ -6,6 +6,7 @@ import { SignupComp } from "./AuthComponents/SignupComp";
 import { AddDiary } from "./DiaryComp/AddDiary";
 import { AddEntry } from "./DiaryComp/AddEntry";
 import { Entries } from "./DiaryComp/Entries";
+import { UpdateEntry } from "./DiaryComp/UpdateEntry";
 import { HomeComp } from "./HomeComp";
 
 export const RouterComp: FC = () => {
@@ -17,6 +18,7 @@ export const RouterComp: FC = () => {
             <Route path="/:diaryid/entries" element={<Entries />} />
             <Route path="/newdiary" element={<AddDiary />} />
             <Route path="/:diaryId/newentry" element={<AddEntry />} />
+            <Route path="/:diaryId/:entryId/updateentry" element={<UpdateEntry />} />
         </Route>
 
         {/* <Route path="/home" element={<HomeComp />} >

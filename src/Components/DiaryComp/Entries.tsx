@@ -47,6 +47,7 @@ export const Entries: FC = () => {
                 entries.items?.map(
                     (item: Entry, index: number) => <div key={index} className="col-4" >
                         <EntryCardComp item={item} />
+                        <button onClick={() => navigate(`/${diaryid}/${item.id}/updateentry`)} >Update</button>
                     </div>
                 )
             }

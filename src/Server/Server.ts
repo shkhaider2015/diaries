@@ -1,5 +1,9 @@
 import { belongsTo, createServer, Factory, hasMany, Model } from "miragejs";
-import { AllDiariesRoute, CREATE_USER_DIARY, CREATE_USER_ENTRY, DiariesRoute, EntriesRoute, GetCheckRoute, LoginRoute, PostCheckRoute, SignupRoute } from "./Routes";
+import { AllDiariesRoute, CREATE_USER_DIARY, 
+  CREATE_USER_ENTRY, DiariesRoute, EntriesRoute, 
+  GetCheckRoute, LoginRoute, PostCheckRoute, 
+  SignupRoute, 
+  UPDATE_USER_ENTRY} from "./Routes";
 
 
 export const MirageServer = () =>
@@ -70,6 +74,8 @@ export const MirageServer = () =>
               this.post("/api/user/diary/create", CREATE_USER_DIARY)
               // Create Entry
               this.post("/api/user/entry/create", CREATE_USER_ENTRY)
+              //update entry
+              this.post("/api/user/entry/update", UPDATE_USER_ENTRY )
           }
     })
 }

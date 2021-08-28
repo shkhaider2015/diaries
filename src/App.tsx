@@ -11,10 +11,10 @@ const App: FC = () => {
     const signup = useAppSelector(state => state.SignupReducer);
 
     return <div>
-        {console.log("Diary Rducer : ", diary.items)}
-        {console.log("Entry Rducer : ", entry.items)}
-        {console.log("Login Rducer : ", login.items)}
-        {console.log("Signup Rducer : ", signup.isSignup)}
+        {/* {console.log("Diary Rducer : ", diary.items)} */}
+        {console.log("Entry Rducer : ", entry.error)}
+        {/* {console.log("Login Rducer : ", login.items)} */}
+        {/* {console.log("Signup Rducer : ", signup.isSignup)} */}
         <NavComp />
         <div className="" >
         <RouterComp />

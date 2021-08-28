@@ -69,3 +69,16 @@ export const AddEntryAction = createAsyncThunk<any, {entry : Entry}>("entry-slic
     return axios.post("/api/user/entry/create", postReq).then(res => {
         return res.data.entries})
 })
+
+export const UpdateEntryAction = createAsyncThunk<any, {req : any}>("entry-slice/entryaction1", async (data) => {
+    console.log("Sction runs ")
+    let postReq = {
+        method : "POST",
+        body : JSON.stringify(data.req)
+    }
+    
+    return axios.post("/api/user/entry/update", postReq).then(res => {
+        return res.data.entries
+    })
+
+})

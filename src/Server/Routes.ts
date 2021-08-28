@@ -134,3 +134,19 @@ export const CREATE_USER_ENTRY = (schema:any, request:Request) =>
 
     return schema.diaries.find(body.diaryId).entry
 }
+
+export const UPDATE_USER_ENTRY = (schema:any, request:Request) => {
+    console.log("Backend runs")
+
+    let req = JSON.parse(request.requestBody);
+    let body = JSON.parse(req.body);
+    let entryId = body.entryId;
+    let diaryId = body.diaryId;
+    let title = body.title;
+    let desc = body.desc;
+    let updatedAt = body.updatedAt;
+
+    schema.db.entries.update(entryId, {title : title, desc : desc, updatedAt : updatedAt})
+
+    return schema.diaries.find(diaryId).entry;
+}
