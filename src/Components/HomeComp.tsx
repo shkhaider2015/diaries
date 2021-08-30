@@ -1,9 +1,10 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
+import { Dropdown } from "react-bootstrap";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useAction } from "../State/Actions/useAction";
 import { Diary } from "../State/DataTypes/diary";
 import { useAppSelector } from "../State/hook";
-import { PrivateSVG } from "../Static/Static";
+import { DiaryCard } from "./DiaryComp/DiaryCard";
 
 export const HomeComp: FC = () => {
 
@@ -11,52 +12,35 @@ export const HomeComp: FC = () => {
     const { DiaryAction } = useAction();
     const user = useAppSelector(state => state.LoginReducer);
     const diary = useAppSelector(state => state.DiaryReducer);
+    const [userId, setUserId] = useState<string|undefined>();
 
     useEffect(
         () => {
             if (user.items) {
                 DiaryAction({ userid: user.items.id })
+                setUserId(user.items.id);
             }
         }, [user]
     )
 
     return <div className="row" >
-        {/* {console.log("Diary : ", diary.items )} */}
-        <div className="col-2 pt-3" style={{ backgroundColor: 'white', height : '90vh' }} >
+        <div className="col-2 pt-3" style={{ backgroundColor: 'white', height: '90vh' }} >
 
             <div className="p-2" >
                 <button className="btn btn-primary w-100" onClick={() => navigate("/newdiary")} >Create New</button>
             </div>
-
+            <div className="pt-2 ps-2 row">
+                <div className="col-10">
+                    <span style={{ fontWeight: 'bold', marginLeft: '5%', fontSize: 12 }} >Public Diaries</span>
+                </div>
+                <div className="col-2">
+                </div>
+            </div>
             {
                 diary.items?.map(
-                    (item: Diary, index: number) => <div onClick={() => navigate(`/${item.id}/entries`)} key={index} className=" pt-2 ps-2 row " >
-                        <div className="col-10 ">
-                            {
-                                item.access === "private"
-                                ? <img src={PrivateSVG} alt="private logo" width='10%' />
-                                : null
-                            }
-                            <span className=" " style={{ fontWeight: 'bold', marginLeft: '5%', fontSize: 12 }} > {item.title} </span>
-                        </div>
-                        <div className="col-2" >
-                            {/* <button>Remove</button> */}
-                        </div>
-                    </div>
+                    (item:Diary, index:number) => userId ? <DiaryCard key={index} item={item} userId={userId} /> : null
                 )
             }
-            {/* First element */}
-            {/* <div className="pt-2 ps-2 row  " >
-                <div className="col-10 ">
-                    <img src={PrivateSVG} alt="private logo" width='10%' />
-                    <span className=" " style={{ fontWeight: 'bold', marginLeft: '5%', fontSize: 12 }} >Diary Name</span>
-                </div>
-                <div className="col-2" >
-                    <button>Remove</button>
-                </div>
-            </div> */}
-
-
         </div>
         <div className="col-10 ps-5">
             <Outlet />

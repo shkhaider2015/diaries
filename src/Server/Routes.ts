@@ -159,3 +159,14 @@ export const DELETE_USER_ENTRY = (schema:any, request:Request) => {
 
     return schema.diaries.find(diaryId).entry
 }
+
+export const DELETE_USER_DIARY = (schema:any, request:Request) => {
+    let req = JSON.parse(request.requestBody);
+    let body = JSON.parse(req.body);
+    let userId = body.userId;
+    let diaryId = body.diaryId;
+
+    schema.diaries.find(diaryId).destroy();
+
+    return schema.users.find(userId).diary
+}

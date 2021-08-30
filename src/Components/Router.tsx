@@ -4,9 +4,9 @@ import { useAppSelector } from "../State/hook";
 import { LoginComp } from "./AuthComponents/LoginComp";
 import { SignupComp } from "./AuthComponents/SignupComp";
 import { AddDiary } from "./DiaryComp/AddDiary";
-import { AddEntry } from "./DiaryComp/AddEntry";
-import { Entries } from "./DiaryComp/Entries";
-import { UpdateEntry } from "./DiaryComp/UpdateEntry";
+import { AddEntry } from "./EntryComp/AddEntry";
+import { Entries } from "./EntryComp/Entries";
+import { UpdateEntry } from "./EntryComp/UpdateEntry";
 import { HomeComp } from "./HomeComp";
 
 export const RouterComp: FC = () => {
