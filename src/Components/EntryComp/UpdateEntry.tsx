@@ -14,24 +14,17 @@ export const UpdateEntry: FC = () => {
 
     const handleSubmit = (e: any) => {
         e.preventDefault()
-
-        // let mTitle: string = e.target.title.value;
-        // let mDesc: string = e.target.desc.value;
         let cTitle: string = "", cDesc: string = "";
-
-
         entries.items?.map(item => {
             if (item.id === entryId) {
                 cTitle = item.title;
                 cDesc = item.desc;
             }
+            return null
         })
 
-
         if (title.length && desc.length) {
-            console.log(12)
             if (cTitle === title && cDesc === desc) {
-                console.log(`mT : ${cTitle} t : ${title} `, 13)
                 return
             }
             else {
@@ -50,7 +43,6 @@ export const UpdateEntry: FC = () => {
             }
         }
         else {
-            console.log(15)
             return
         }
 
@@ -65,9 +57,11 @@ export const UpdateEntry: FC = () => {
                             setTitle(item.title)
                             setDesc(item.desc)
                         }
+                        return null
                     }
                 )
             }
+            // eslint-disable-next-line
         }, [entryId]
     )
 

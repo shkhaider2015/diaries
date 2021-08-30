@@ -94,14 +94,14 @@ export const DeleteEntryAction = createAsyncThunk<any, {req : { entryId:string|u
 
 })
 
-export const DeleteDiaryAction = createAsyncThunk<any, {req : { userId:string|undefined, diaryId:string|undefined }}>("diary-slice/diaryaction", async (data) => {
+export const DeleteDiaryAction = createAsyncThunk<any, {req : any}>("diary-slice/diaryaction", async (data) => {
     let postReq = {
         method : "POST",
         body : JSON.stringify(data.req)
     }
     
     return axios.post("/api/user/diary/delete", postReq).then(res => {
-        return res.data.entries
+        return res.data.diaries
     })
 
 })

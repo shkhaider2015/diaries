@@ -20,13 +20,7 @@ export const RouterComp: FC = () => {
             <Route path="/:diaryId/newentry" element={<AddEntry />} />
             <Route path="/:diaryId/:entryId/updateentry" element={<UpdateEntry />} />
         </Route>
-
-        {/* <Route path="/home" element={<HomeComp />} >
-            <Route path="/" element={<Entries />} />
-            <Route path="/newdiary" element={<AddDiary />} />
-            <Route path="/newentry" element={<AddEntry />} />
-        </Route> */}
-
+        
         <Route path="/login" element={<LoginComp />} />
         <Route path="/signup" element={<SignupComp />} />
 
