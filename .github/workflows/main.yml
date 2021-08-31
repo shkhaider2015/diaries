@@ -33,7 +33,7 @@ jobs:
         uses: Borales/actions-yarn@v2.3.0
         with:
           # Yarn command
-          cmd: nom install
+          cmd: npm install
 
       # Creating Build   
       - name: Creating build
