@@ -33,11 +33,11 @@ jobs:
         uses: Borales/actions-yarn@v2.3.0
         with:
           # Yarn command
-          cmd: sudo yarn install
+          cmd: nom install
 
       # Creating Build   
       - name: Creating build
-        run: sudo yarn build
+        run: sudo npm build
       
       # Deploying On Surge  
       - name: Installing Surge
