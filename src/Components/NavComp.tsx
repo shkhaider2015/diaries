@@ -13,21 +13,13 @@ export const NavComp = () =>
 
     return <Navbar expand="sm" variant="dark" style={{ backgroundColor: '#8a00bd' }}  >
     <Container>
-      <Link to="/" style={{ textDecoration: 'none' }} > <Navbar.Brand className="my-logo" as="div" href="/">My Diary</Navbar.Brand></Link>
+      <Link to="/" style={{ textDecoration: 'none' }} > <Navbar.Brand className="my-logo" as="div" href="/"> 
+      <span style={{ WebkitTextStroke : '1px white', color : '#8a00bd', fontSize : '2rem', fontWeight : 'bold' }} >My Diary</span> </Navbar.Brand></Link>
   
-      {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav  ml-5">
-        <Nav className="me-auto">
-          <NavDropdown title="Diary" id="basic-nav-dropdown">
-            <NavDropdown.Item href="#action/3.1">Public Diary</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.2">Private Diary</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">All</NavDropdown.Item>
-          </NavDropdown>
-        </Nav>
-      </Navbar.Collapse> */}
+      
       <Navbar.Collapse id="user-navbar" className="justify-content-end" >
         <Nav className="" >
-          <NavDropdown title={loginState.items ? loginState.items.username : "Register"} id="user-dropdown" className="justify-content-end" >
+          <NavDropdown title={loginState.items ? loginState.items.username : "Register"} id="user-dropdown" className="justify-content-end font-weight-bold" >
             {
               loginState.items
                 ? <NavDropdown.Item onClick={() => handleLogout()} >Logout</NavDropdown.Item>

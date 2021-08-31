@@ -5,6 +5,7 @@ import { Diary } from "../../State/DataTypes/diary";
 import { Entry } from "../../State/DataTypes/entry";
 import { useAppSelector } from "../../State/hook";
 import { AddNewEntry } from "../../Static/Static";
+import { convertToTitleCase } from "../../Utility/utils";
 import { EntryCardComp } from "./EntryCard";
 
 export const Entries: FC = () => {
@@ -40,8 +41,8 @@ export const Entries: FC = () => {
         return <div className="row"  >
             <div className="col-12 mt-2 mb-3">
                 <div style={{ display : "grid", height : '10vh', placeItems : 'center' }} >
-                <h1> {diary?.title} </h1>
-                <p> {diary?.desc} </p>
+                <h1> {diary?.title.toUpperCase()} </h1>
+                <p> {convertToTitleCase(diary?.desc ? diary.desc : "")} </p>
                 </div>
             </div>
             <div className="col-12 col-sm-12 col-md-6 col-lg-4 " >

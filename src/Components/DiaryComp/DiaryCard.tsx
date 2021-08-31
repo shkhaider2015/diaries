@@ -4,7 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { useAction } from "../../State/Actions/useAction";
 import { Diary } from "../../State/DataTypes/diary";
 import { VisibleSVG, InvisibleSVG, ThreeDots } from "../../Static/Static";
-import { useDropDown } from "../useDropDown";
+import { useDropDown } from "../../CustomHooks/useDropDown";
+import { convertToTitleCase } from "../../Utility/utils";
 
 type propTypes = {
     item : Diary,
@@ -34,7 +35,7 @@ export const DiaryCard: FC<propTypes> = ({item, userId}) => {
                     ? <InvisibleSVG width="1rem" height="1rem" />
                     : <VisibleSVG width="1rem" height="1rem" />
             }
-            <span className="" style={{ fontWeight: 'bold', marginLeft: '5%', fontSize: 12 }} > {item.title} </span>
+            <span className="" style={{ fontWeight: 'bold', marginLeft: '5%', fontSize: 12 }} > {convertToTitleCase(item.title)} </span>
         </div>
         <div className="col-2 " >
             <ThreeDots width="1rem" height="1rem" className="" onClick={() => setIsComponentVisible(!isComponentVisible)} />

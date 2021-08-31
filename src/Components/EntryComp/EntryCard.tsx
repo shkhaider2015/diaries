@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useAction } from "../../State/Actions/useAction";
 import { Entry } from "../../State/DataTypes/entry";
 import { WaveSVG, ThreeDots } from "../../Static/Static";
-import { useDropDown } from "../useDropDown";
+import { useDropDown } from "../../CustomHooks/useDropDown";
+import { convertToTitleCase } from "../../Utility/utils";
 
 type propTypes = {
     item: Entry,
@@ -32,7 +33,7 @@ export const EntryCardComp = ({ item, diaryId }: propTypes) => {
         className="shadow mt-3 rounded position-relative" >
 
         <div className="d-flex flex-direction-row justify-content-between ps-2 pe-2 pt-2" >
-            <p className="font-weight-bold" > {item.title} </p> <div className="d-flex " > <p style={{ fontSize: '0.7rem', opacity: 0.5 }} > {getFormattedTime(item.createdAt)} </p>
+            <p style={{ fontWeight : 'bold', opacity : .8 }} > {convertToTitleCase(item.title)} </p> <div className="d-flex " > <p style={{ fontSize: '0.7rem', opacity: 0.5 }} > {getFormattedTime(item.createdAt)} </p>
                 <ThreeDots width="1.3rem" height="1.3rem" className="dropdown" onClick={() => setIsComponentVisible(!isComponentVisible)} />
                 <Dropdown.Menu show={isComponentVisible} ref={ref} >
                     <Dropdown.Item
