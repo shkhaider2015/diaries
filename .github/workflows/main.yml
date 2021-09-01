@@ -43,8 +43,8 @@ jobs:
       #  run: cd build
 
       # rebuild sass
-      #- name: Rebuild Node-sass
-      #  run: sudo npm rebuild node-sass
+      - name: Rebuild Node-sass
+        run: sudo npm rebuild node-sass
       
       # Deploying On Surge  
       - name: Installing Surge
