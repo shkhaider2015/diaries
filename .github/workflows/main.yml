@@ -35,6 +35,9 @@ jobs:
           # Yarn command
           cmd: install
 
+      # rebuild sass
+      - name: Rebuild Node-sass
+        run: sudo npm rebuild node-sass
 
       # Creating Build   
       - name: Creating build
@@ -42,9 +45,6 @@ jobs:
       #- name: Go to ./build
       #  run: cd build
 
-      # rebuild sass
-      - name: Rebuild Node-sass
-        run: sudo npm rebuild node-sass
       
       # Deploying On Surge  
       - name: Installing Surge
