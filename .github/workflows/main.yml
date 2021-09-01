@@ -37,7 +37,7 @@ jobs:
 
       # rebuild sass
       - name: Rebuild Node-sass
-        run: npm rebuild node-sass
+        run: npm install node-sass@5
 
       # Creating Build   
       - name: Creating build
