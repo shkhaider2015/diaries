@@ -35,6 +35,10 @@ jobs:
           # Yarn command
           cmd: install
 
+      # rebuild sass
+      - name: Rebuild Node-sass
+        run: npm rebuild node-sass
+
       # Creating Build   
       - name: Creating build
         run: sudo yarn build
