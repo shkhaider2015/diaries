@@ -41,7 +41,7 @@ jobs:
 
       # Creating Build   
       - name: Creating build
-        run:  yarn build
+        run: sudo yarn build
       #- name: Go to ./build
       #  run: cd build
 
