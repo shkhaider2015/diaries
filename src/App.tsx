@@ -3,9 +3,9 @@ import { RouterComp } from "./Components/Router";
 import { NavComp } from "./Components/NavComp";
 
 const App: FC = () => {
-    return <div>
+    return <div style={{ width : '100vw', overflowX : 'hidden' }} >
         <NavComp />
-        <div className="" >
+        <div >
         <RouterComp />
         </div>
     </div>
