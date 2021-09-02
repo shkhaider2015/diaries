@@ -35,7 +35,6 @@ export const SignupRoute = (schema:any, request:Request) => {
 
     if(user)
     {
-        console.log("User already exist")
         return new Response(401)
     }
 
@@ -47,7 +46,6 @@ export const LoginRoute = (schema:any, request:Request) => {
     let req = JSON.parse(request.requestBody);
     let body = JSON.parse(req.body)
     let email = body.email;
-    // let password = body.password; // will define
 
     let user = schema.users.findBy({email});
 
@@ -57,7 +55,6 @@ export const LoginRoute = (schema:any, request:Request) => {
     }
     else
     {
-       console.log("Backend / Login / User : ", user)
     }
 
     return user.attrs;
@@ -90,19 +87,13 @@ export const CREATE_USER_DIARY = (schema:any, request:Request) =>
 {
     let req = JSON.parse(request.requestBody);
     let body = JSON.parse(req.body);
-    
+
     let user = schema.users.find(body.userId);
 
     if(!user) return new Response(400)
 
-
     let jj = schema.diaries.create(body)
     user.diaryIds.push(jj.attrs.id)
-
-    // let againUser = schema.users.find(body.userId);
-    // let diaries = againUser.diary
-
-    // console.log("back : ", diaries)
 
     return schema.users.find(body.userId).diary
 }
@@ -112,25 +103,12 @@ export const CREATE_USER_ENTRY = (schema:any, request:Request) =>
     let req = JSON.parse(request.requestBody);
     let body = JSON.parse(req.body);
     
-    // let user = schema.users.find(body.diaryId);
     let diary = schema.diaries.find(body.diaryId);
 
     if(!diary) return new Response(400)
 
-
-    // let jj = schema.diaries.create(body) //
     let newEntry = schema.entries.create(body)
-    // user.diaryIds.push(jj.attrs.id)
     diary.entryIds.push(newEntry.attrs.id)
-
-    // let againUser = schema.users.find(body.userId);
-    // let diaries = againUser.diary
-
-    // let fetchDiary = schema.diaries.find(body.diaryId);
-    // let entries = fetchDiary.entry
-
-    // console.log("back entry : ", diary)
-    // console.log("back new entry : ", entries)
 
     return schema.diaries.find(body.diaryId).entry
 }

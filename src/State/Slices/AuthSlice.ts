@@ -40,6 +40,9 @@ export const LoginSlice = createSlice({
     name : 'login-slice',
     initialState : loginState,
     reducers : {
+        Logout : (state) => {
+            state.items = null
+        }
 
     },
     extraReducers : (builder) => {
@@ -60,5 +63,6 @@ export const LoginSlice = createSlice({
     }
 })
 // export const { Login , Signup  } = Authentications.actions;
+export const { Logout } = LoginSlice.actions
 export const SignupReducer = SignupSlice.reducer;
 export const LoginReducer = LoginSlice.reducer;

@@ -1,14 +1,18 @@
 import { Navbar, NavDropdown, Container, Nav } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { useAppSelector } from "../State/hook";
+import { Logout } from "../State/Slices/AuthSlice";
+import { useAppDispatch, useAppSelector } from "../State/hook";
 
 export const NavComp = () =>
 {
   const loginState = useAppSelector(state => state.LoginReducer);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
 
   const handleLogout = () =>
   {
+    dispatch(Logout())
   }
 
     return <Navbar expand="sm" variant="dark" style={{ backgroundColor: '#8a00bd' }}  >
