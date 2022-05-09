@@ -1,7 +1,10 @@
 # Technologies
 
-## * ReactJS 
-## * Typescript, MirageJS, Redux-Toolkit, Bootstrap
+### ReactJS 
+### Typescript
+### MirageJS
+### Redux-Toolkit
+### Bootstrap
 
 # URL
 ## Project is Live at https://shkhaider-diaries.surge.sh 
